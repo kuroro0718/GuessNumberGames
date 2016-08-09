@@ -49,13 +49,20 @@ class FinalCodeViewController: UIViewController {
                 rangeEnd = inputNumber
                 updateResultLable()
             } else {
-                resultLabel.text? = "\(playerList[playerIndex]) 你輸了！"
+                resultLabel.text? = "\(playerList[playerIndex]) 你輸了！"                
             }
             
             inputTextField.text = ""
             updatePlayerName()
             updateRemainedNumberLabel()
         }
+    }
+    
+    @IBAction func newGameButtonPressed(sender: UIButton) {
+        createPassword()
+        
+        playerIndex = 0
+        updatePlayerName()
     }
     
     func createPassword() {

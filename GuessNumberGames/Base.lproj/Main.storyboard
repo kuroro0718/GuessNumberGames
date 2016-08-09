@@ -65,11 +65,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEV-7f-YVx">
+                                <rect key="frame" x="101.5" y="360" width="118" height="41"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="New Game"/>
+                                <connections>
+                                    <action selector="newGameButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WRT-Iq-tRz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OGo-ze-ghD" firstAttribute="top" secondItem="jC7-WH-Cl4" secondAttribute="bottom" constant="20" id="5aR-dS-bjc"/>
                             <constraint firstItem="BGb-Ys-Hgi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="86F-Ir-mrg"/>
+                            <constraint firstItem="bEV-7f-YVx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9v8-lf-vzf"/>
                             <constraint firstItem="vj7-Of-HB4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="CqO-ff-IYv"/>
                             <constraint firstItem="EfK-6R-e8n" firstAttribute="top" secondItem="jC7-WH-Cl4" secondAttribute="bottom" constant="20" id="ERc-vA-t3t"/>
                             <constraint firstItem="jC7-WH-Cl4" firstAttribute="top" secondItem="vj7-Of-HB4" secondAttribute="bottom" constant="24" id="PpN-Gv-ouF"/>
@@ -77,6 +87,7 @@
                             <constraint firstItem="1sQ-Bg-vwe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UjJ-gU-w1h"/>
                             <constraint firstItem="OGo-ze-ghD" firstAttribute="leading" secondItem="EfK-6R-e8n" secondAttribute="trailing" constant="24" id="apI-Qf-r0U"/>
                             <constraint firstItem="1sQ-Bg-vwe" firstAttribute="top" secondItem="EfK-6R-e8n" secondAttribute="bottom" constant="40" id="eAB-e6-eMb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bEV-7f-YVx" secondAttribute="bottom" constant="167" id="jaK-0A-NDA"/>
                             <constraint firstItem="vj7-Of-HB4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q44-eH-SiV"/>
                             <constraint firstItem="jC7-WH-Cl4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r69-cF-Fuj"/>
                             <constraint firstItem="EfK-6R-e8n" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="ukT-mL-LHU"/>
