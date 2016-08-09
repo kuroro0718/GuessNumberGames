@@ -22,12 +22,14 @@ class FinalCodeViewController: UIViewController {
     var playerIndex = 0
     var remainedNumber = 0
     var playerList = ["Alex", "Jeff", "John", "Peter"]
+    var playerSkipDict = [String : Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         createPassword()
+        shufflePlayerList()
         updatePlayerName()
     }
 
@@ -60,6 +62,7 @@ class FinalCodeViewController: UIViewController {
     
     @IBAction func newGameButtonPressed(sender: UIButton) {
         createPassword()
+        shufflePlayerList()
         
         playerIndex = 0
         updatePlayerName()
@@ -90,5 +93,17 @@ class FinalCodeViewController: UIViewController {
     func updateRemainedNumberLabel() {
         remainedNumber = rangeEnd - rangeStart + 1
         remainedNumberLabel.text = "Remain: \(remainedNumber) numbers"
+    }
+    
+    func shufflePlayerList() {
+        let count = playerList.count
+        
+        for i in 0..<count - 1 {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            guard i != j else { continue }
+            swap(&playerList[i], &playerList[j])
+        }
+        
+        print(playerList)
     }
 }
