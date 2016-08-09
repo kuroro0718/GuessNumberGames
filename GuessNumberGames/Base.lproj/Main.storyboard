@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Select Page-->
@@ -27,6 +28,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71f-op-CeD">
                                 <rect key="frame" x="108" y="218" width="105" height="30"/>
                                 <state key="normal" title="Bulls and Cows"/>
+                                <connections>
+                                    <segue destination="opr-6u-90j" kind="push" id="NVB-8S-40J"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -144,6 +148,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="606" y="242"/>
+        </scene>
+        <!--Bulls And Cows View Controller-->
+        <scene sceneID="umm-Wu-W9U">
+            <objects>
+                <viewController id="opr-6u-90j" customClass="BullsAndCowsViewController" customModule="GuessNumberGames" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JJy-aE-Sff"/>
+                        <viewControllerLayoutGuide type="bottom" id="wxI-3W-WKQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="grO-GV-0xn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Bulls and Cows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LB-nv-f36">
+                                <rect key="frame" x="58" y="72" width="204" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZq-kP-lcE">
+                                <rect key="frame" x="20" y="138" width="211" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzg-Xv-FpO">
+                                <rect key="frame" x="250" y="138" width="55" height="30"/>
+                                <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmButtonPressed:" destination="opr-6u-90j" eventType="touchUpInside" id="eMI-yc-XRq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="rZq-kP-lcE" secondAttribute="leading" id="3T4-iG-aQT"/>
+                            <constraint firstItem="9LB-nv-f36" firstAttribute="centerX" secondItem="grO-GV-0xn" secondAttribute="centerX" id="Ikv-Ct-Gv2"/>
+                            <constraint firstItem="rZq-kP-lcE" firstAttribute="top" secondItem="9LB-nv-f36" secondAttribute="bottom" constant="30" id="jq1-mZ-K4M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kzg-Xv-FpO" secondAttribute="trailing" constant="-5" id="kYl-u4-ehZ"/>
+                            <constraint firstItem="kzg-Xv-FpO" firstAttribute="top" secondItem="9LB-nv-f36" secondAttribute="bottom" constant="30" id="tLb-sz-onk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wVi-oc-9AO"/>
+                    <connections>
+                        <outlet property="inputTextField" destination="rZq-kP-lcE" id="N6T-X3-V0T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3oM-fU-6wW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="606" y="961"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8yC-H4-aQG">
