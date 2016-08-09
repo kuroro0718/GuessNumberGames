@@ -198,6 +198,13 @@
                                     <outlet property="delegate" destination="opr-6u-90j" id="tIC-aF-7oe"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkY-3k-LqU">
+                                <rect key="frame" x="125" y="530" width="75" height="30"/>
+                                <state key="normal" title="New Game"/>
+                                <connections>
+                                    <action selector="newGameButtonPressed:" destination="opr-6u-90j" eventType="touchUpInside" id="alt-rA-fOY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

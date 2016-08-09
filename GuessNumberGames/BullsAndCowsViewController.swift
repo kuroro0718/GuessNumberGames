@@ -31,6 +31,18 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func newGameButtonPressed(sender: UIButton) {
+        numOfA = 0
+        numOfB = 0
+        
+        resultArray.removeAll()
+        resultTableView.reloadData()
+        inputTextField.text = ""
+        
+        resetPassword()
+        createPassword()
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultArray.count
     }
@@ -63,6 +75,11 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
             resultArray.append(("\(input) =>    \(numOfA)A\(numOfB)B"))
             resultTableView.reloadData()
         }
+    }
+    
+    func resetPassword() {
+        passwordArray.removeAll()
+        password = ""
     }
     
     func createPassword() {
