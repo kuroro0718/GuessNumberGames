@@ -179,6 +179,25 @@
                                     <action selector="confirmButtonPressed:" destination="opr-6u-90j" eventType="touchUpInside" id="eMI-yc-XRq"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZFM-Rs-S0L">
+                                <rect key="frame" x="20" y="188" width="285" height="317"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultIdentifier" id="9eN-iG-pyt">
+                                        <rect key="frame" x="0.0" y="28" width="285" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9eN-iG-pyt" id="m5i-2I-H49">
+                                            <rect key="frame" x="0.0" y="0.0" width="285" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="opr-6u-90j" id="9EM-ky-zRf"/>
+                                    <outlet property="delegate" destination="opr-6u-90j" id="tIC-aF-7oe"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -192,6 +211,7 @@
                     <navigationItem key="navigationItem" id="wVi-oc-9AO"/>
                     <connections>
                         <outlet property="inputTextField" destination="rZq-kP-lcE" id="N6T-X3-V0T"/>
+                        <outlet property="resultTableView" destination="ZFM-Rs-S0L" id="FTJ-xl-Z2A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3oM-fU-6wW" userLabel="First Responder" sceneMemberID="firstResponder"/>

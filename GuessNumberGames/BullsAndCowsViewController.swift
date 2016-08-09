@@ -8,14 +8,16 @@
 
 import UIKit
 
-class BullsAndCowsViewController: UIViewController {
+class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var resultTableView: UITableView!
     
     var password = ""
     var passwordArray: [Int] = []
     var numOfA = 0
     var numOfB = 0
+    var resultArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,19 @@ class BullsAndCowsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return resultArray.count
+    }
 
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("resultIdentifier", forIndexPath: indexPath)
+        
+        cell.textLabel?.text = resultArray[indexPath.row]
+        
+        return cell
+    }
+    
     @IBAction func confirmButtonPressed(sender: UIButton) {
         if let input = inputTextField.text {
             let inputArray: [Int] = convertStringToArray(input)
@@ -46,9 +60,9 @@ class BullsAndCowsViewController: UIViewController {
                     }
                 }
             }
+            resultArray.append(("\(input) =>    \(numOfA)A\(numOfB)B"))
+            resultTableView.reloadData()
         }
-        
-        print("\(numOfA)A\(numOfB)B")
     }
     
     func createPassword() {
