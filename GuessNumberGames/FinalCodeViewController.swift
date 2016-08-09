@@ -15,18 +15,20 @@ class FinalCodeViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     
+    @IBOutlet weak var remainedNumberLabel: UILabel!
     var password: Int?
     var rangeStart: Int = 0
     var rangeEnd: Int = 99
     var playerIndex = 0
+    var remainedNumber = 0
     var playerList = ["Alex", "Jeff", "John", "Peter"]
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         createPassword()
+        updatePlayerName()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +54,7 @@ class FinalCodeViewController: UIViewController {
             
             inputTextField.text = ""
             updatePlayerName()
+            updateRemainedNumberLabel()
         }
     }
     
@@ -75,5 +78,10 @@ class FinalCodeViewController: UIViewController {
         } else {
             playerIndex += 1
         }
+    }
+    
+    func updateRemainedNumberLabel() {
+        remainedNumber = rangeEnd - rangeStart + 1
+        remainedNumberLabel.text = "Remain: \(remainedNumber) numbers"
     }
 }

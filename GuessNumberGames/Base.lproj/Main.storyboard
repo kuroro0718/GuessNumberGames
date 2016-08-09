@@ -30,7 +30,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 ~ 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sQ-Bg-vwe">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 ~ 100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sQ-Bg-vwe">
                                 <rect key="frame" x="121" y="199" width="79" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -56,13 +56,24 @@
                                     <action selector="confirmButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9sf-6g-tUT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGb-Ys-Hgi">
+                                <rect key="frame" x="85" y="251" width="150" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="XQ4-OJ-agH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OGo-ze-ghD" firstAttribute="top" secondItem="jC7-WH-Cl4" secondAttribute="bottom" constant="20" id="5aR-dS-bjc"/>
+                            <constraint firstItem="BGb-Ys-Hgi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="86F-Ir-mrg"/>
                             <constraint firstItem="vj7-Of-HB4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="CqO-ff-IYv"/>
                             <constraint firstItem="EfK-6R-e8n" firstAttribute="top" secondItem="jC7-WH-Cl4" secondAttribute="bottom" constant="20" id="ERc-vA-t3t"/>
                             <constraint firstItem="jC7-WH-Cl4" firstAttribute="top" secondItem="vj7-Of-HB4" secondAttribute="bottom" constant="24" id="PpN-Gv-ouF"/>
+                            <constraint firstItem="BGb-Ys-Hgi" firstAttribute="top" secondItem="1sQ-Bg-vwe" secondAttribute="bottom" constant="23" id="TLe-Nm-bXT"/>
                             <constraint firstItem="1sQ-Bg-vwe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UjJ-gU-w1h"/>
                             <constraint firstItem="OGo-ze-ghD" firstAttribute="leading" secondItem="EfK-6R-e8n" secondAttribute="trailing" constant="24" id="apI-Qf-r0U"/>
                             <constraint firstItem="1sQ-Bg-vwe" firstAttribute="top" secondItem="EfK-6R-e8n" secondAttribute="bottom" constant="40" id="eAB-e6-eMb"/>
@@ -76,6 +87,7 @@
                         <outlet property="confirmButton" destination="OGo-ze-ghD" id="vAx-fb-wmy"/>
                         <outlet property="inputTextField" destination="EfK-6R-e8n" id="7mg-Fs-Hy7"/>
                         <outlet property="playerNameLabel" destination="jC7-WH-Cl4" id="jsI-QS-awt"/>
+                        <outlet property="remainedNumberLabel" destination="BGb-Ys-Hgi" id="Qrl-hV-SzW"/>
                         <outlet property="resultLabel" destination="1sQ-Bg-vwe" id="6pG-Ct-70f"/>
                     </connections>
                 </viewController>
