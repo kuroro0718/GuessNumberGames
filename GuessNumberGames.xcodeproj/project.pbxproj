@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		EBF90CE41D59A695003E962D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF90CE31D59A695003E962D /* AppDelegate.swift */; };
-		EBF90CE61D59A695003E962D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF90CE51D59A695003E962D /* ViewController.swift */; };
 		EBF90CE91D59A695003E962D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF90CE71D59A695003E962D /* Main.storyboard */; };
 		EBF90CEB1D59A695003E962D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF90CEA1D59A695003E962D /* Assets.xcassets */; };
 		EBF90CEE1D59A695003E962D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF90CEC1D59A695003E962D /* LaunchScreen.storyboard */; };
+		EBF90CF61D59AD0C003E962D /* FinalCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF90CF51D59AD0C003E962D /* FinalCodeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EBF90CE01D59A695003E962D /* GuessNumberGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessNumberGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF90CE31D59A695003E962D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EBF90CE51D59A695003E962D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EBF90CE81D59A695003E962D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBF90CEA1D59A695003E962D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBF90CED1D59A695003E962D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBF90CEF1D59A695003E962D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBF90CF51D59AD0C003E962D /* FinalCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalCodeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				EBF90CE31D59A695003E962D /* AppDelegate.swift */,
-				EBF90CE51D59A695003E962D /* ViewController.swift */,
+				EBF90CF51D59AD0C003E962D /* FinalCodeViewController.swift */,
 				EBF90CE71D59A695003E962D /* Main.storyboard */,
 				EBF90CEA1D59A695003E962D /* Assets.xcassets */,
 				EBF90CEC1D59A695003E962D /* LaunchScreen.storyboard */,
@@ -136,8 +136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF90CE61D59A695003E962D /* ViewController.swift in Sources */,
 				EBF90CE41D59A695003E962D /* AppDelegate.swift in Sources */,
+				EBF90CF61D59AD0C003E962D /* FinalCodeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
