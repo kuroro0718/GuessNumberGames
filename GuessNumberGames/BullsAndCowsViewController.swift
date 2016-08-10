@@ -58,6 +58,12 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func confirmButtonPressed(sender: UIButton) {
         if let input = inputTextField.text {
             let inputArray: [Int] = convertStringToArray(input)
+            if checkInputNumber(inputArray) == false {
+                resultArray.append("Invalid Number!")
+                resultTableView.reloadData()
+                return
+            }
+            
             numOfA = 0
             numOfB = 0
             
@@ -106,5 +112,17 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
             count -= 1
         }
         return numArray
+    }
+    
+    func checkInputNumber(num: [Int]) -> Bool {
+        for i in 0..<num.count {
+            for j in i+1..<num.count {
+                if num[i] == num[j] {
+                    return false
+                }
+            }
+        }
+        
+        return true
     }
 }

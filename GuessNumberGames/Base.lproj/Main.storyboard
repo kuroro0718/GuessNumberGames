@@ -198,7 +198,7 @@
                                     <outlet property="delegate" destination="opr-6u-90j" id="tIC-aF-7oe"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkY-3k-LqU">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkY-3k-LqU">
                                 <rect key="frame" x="125" y="530" width="75" height="30"/>
                                 <state key="normal" title="New Game"/>
                                 <connections>
@@ -210,8 +210,10 @@
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="rZq-kP-lcE" secondAttribute="leading" id="3T4-iG-aQT"/>
                             <constraint firstItem="9LB-nv-f36" firstAttribute="centerX" secondItem="grO-GV-0xn" secondAttribute="centerX" id="Ikv-Ct-Gv2"/>
+                            <constraint firstItem="bkY-3k-LqU" firstAttribute="centerX" secondItem="grO-GV-0xn" secondAttribute="centerX" id="WyH-SA-MRv"/>
                             <constraint firstItem="rZq-kP-lcE" firstAttribute="top" secondItem="9LB-nv-f36" secondAttribute="bottom" constant="30" id="jq1-mZ-K4M"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kzg-Xv-FpO" secondAttribute="trailing" constant="-5" id="kYl-u4-ehZ"/>
+                            <constraint firstItem="wxI-3W-WKQ" firstAttribute="top" secondItem="bkY-3k-LqU" secondAttribute="bottom" constant="8" id="sP5-3A-QU4"/>
                             <constraint firstItem="kzg-Xv-FpO" firstAttribute="top" secondItem="9LB-nv-f36" secondAttribute="bottom" constant="30" id="tLb-sz-onk"/>
                         </constraints>
                     </view>
