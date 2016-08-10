@@ -13,10 +13,10 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var resultTableView: UITableView!
     
-    var passwordArray: [Int] = []
     var numOfA = 0
     var numOfB = 0
     var resultArray: [String] = []
+    var passwordArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,7 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func confirmButtonPressed(sender: UIButton) {
         if let input = inputTextField.text {
-            let inputArray: [Int] = convertStringToArray(input)
+            let inputArray = input.characters.map( { String($0)} )
             if checkInputNumber(inputArray) == false {
                 resultArray.append("Invalid Number!")
                 resultTableView.reloadData()
@@ -65,7 +65,6 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
             
             numOfA = 0
             numOfB = 0
-            
             for (inputIndex, inputDigit) in inputArray.enumerate() {
                 for (passwordIndex, passwordDigit) in passwordArray.enumerate() {
                     if inputDigit == passwordDigit && inputIndex == passwordIndex {
@@ -77,18 +76,17 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
                     }
                 }
             }
-            resultArray.append(("\(input) =>    \(numOfA)A\(numOfB)B"))
+            resultArray.append(("\(input) => \(numOfA)A\(numOfB)B"))
             resultTableView.reloadData()
         }
     }
     
     func createPassword() {
-        while passwordArray.count < 4 {
-            let num = Int(arc4random_uniform(9))
-            
-            if !passwordArray.contains(num) {  // Can not contain repeat number
-                passwordArray.append(num)
-            }
+        var numArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        
+        for _ in 0...3 {
+            let n = Int(arc4random_uniform(UInt32(numArray.count - 1)))
+            passwordArray.append(numArray.removeAtIndex(n))
         }
         print(passwordArray)
     }
@@ -107,7 +105,7 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
         return numArray
     }
     
-    func checkInputNumber(num: [Int]) -> Bool {
+    func checkInputNumber(num: [String]) -> Bool {
         for i in 0..<num.count {
             for j in i+1..<num.count {
                 if num[i] == num[j] {
