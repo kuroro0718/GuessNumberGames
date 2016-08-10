@@ -13,7 +13,6 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var resultTableView: UITableView!
     
-    var password = ""
     var passwordArray: [Int] = []
     var numOfA = 0
     var numOfB = 0
@@ -39,7 +38,7 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
         resultTableView.reloadData()
         inputTextField.text = ""
         
-        resetPassword()
+        passwordArray.removeAll()
         createPassword()
     }
     
@@ -83,21 +82,15 @@ class BullsAndCowsViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    func resetPassword() {
-        passwordArray.removeAll()
-        password = ""
-    }
-    
     func createPassword() {
         while passwordArray.count < 4 {
             let num = Int(arc4random_uniform(9))
             
             if !passwordArray.contains(num) {  // Can not contain repeat number
-                password += String(num)
                 passwordArray.append(num)
             }
         }
-        print(password)
+        print(passwordArray)
     }
     
     func convertStringToArray(str: String) -> [Int] {
