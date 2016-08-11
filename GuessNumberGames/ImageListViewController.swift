@@ -10,6 +10,9 @@ import UIKit
 
 class ImageListViewController: UIViewController {
 
+    @IBOutlet weak var locationImageView: UIImageView!
+    @IBOutlet weak var switchButton: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +24,11 @@ class ImageListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func switchButtonPressed(sender: AnyObject) {
+        if switchButton.on {
+            locationImageView.clipsToBounds = true
+        } else {
+            locationImageView.clipsToBounds = false
+        }
     }
-    */
-
 }
