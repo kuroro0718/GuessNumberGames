@@ -12,6 +12,9 @@ class ImageListViewController: UIViewController {
 
     @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var switchButton: UISwitch!
+    @IBOutlet weak var citySegmentedControl: UISegmentedControl!
+    
+    var imageName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,5 +33,14 @@ class ImageListViewController: UIViewController {
         } else {
             locationImageView.clipsToBounds = false
         }
+    }
+    @IBAction func citySegmentedControlChanged(sender: AnyObject) {
+        switch citySegmentedControl.selectedSegmentIndex {
+        case 0: imageName = "tokyo"
+        case 1: imageName = "kyoto"
+        case 2: imageName = "yokohama"
+        default: imageName = "tokyo"
+        }
+        locationImageView.image = UIImage(named: imageName)
     }
 }

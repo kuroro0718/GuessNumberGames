@@ -257,20 +257,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tokyo" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-IS-sto">
-                                <rect key="frame" x="40" y="419" width="161" height="92"/>
-                            </imageView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XkF-Mr-alk">
-                                <rect key="frame" x="40" y="332" width="51" height="31"/>
+                                <rect key="frame" x="20" y="332" width="51" height="31"/>
                                 <connections>
                                     <action selector="switchButtonPressed:" destination="XrM-oZ-6EB" eventType="valueChanged" id="xQm-2m-AeK"/>
                                 </connections>
                             </switch>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Gh-GC-G61">
+                                <rect key="frame" x="20" y="281" width="250" height="29"/>
+                                <segments>
+                                    <segment title="Tokyo"/>
+                                    <segment title="Kyoto"/>
+                                    <segment title="Yokohama"/>
+                                </segments>
+                                <connections>
+                                    <action selector="citySegmentedControlChanged:" destination="XrM-oZ-6EB" eventType="valueChanged" id="brQ-uG-e2z"/>
+                                </connections>
+                            </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tokyo" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-IS-sto">
+                                <rect key="frame" x="20" y="393" width="260" height="126"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Euo-XU-X43"/>
                     <connections>
+                        <outlet property="citySegmentedControl" destination="6Gh-GC-G61" id="p5E-LO-cAr"/>
                         <outlet property="locationImageView" destination="Y2l-IS-sto" id="4nd-DG-JTp"/>
                         <outlet property="switchButton" destination="XkF-Mr-alk" id="agj-6J-Zy9"/>
                     </connections>
