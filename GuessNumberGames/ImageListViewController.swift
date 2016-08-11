@@ -14,7 +14,7 @@ class ImageListViewController: UIViewController {
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var citySegmentedControl: UISegmentedControl!
     
-    var imageName = ""
+    var imageName = "tokyo"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,7 @@ class ImageListViewController: UIViewController {
             locationImageView.clipsToBounds = false
         }
     }
+    
     @IBAction func citySegmentedControlChanged(sender: AnyObject) {
         switch citySegmentedControl.selectedSegmentIndex {
         case 0: imageName = "tokyo"
@@ -42,5 +43,12 @@ class ImageListViewController: UIViewController {
         default: imageName = "tokyo"
         }
         locationImageView.image = UIImage(named: imageName)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showImageDetail" {
+            let vc = segue.destinationViewController as! ImageDetailViewController
+            vc.imageName = imageName
+        }
     }
 }

@@ -257,6 +257,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tokyo" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-IS-sto">
+                                <rect key="frame" x="20" y="393" width="260" height="126"/>
+                            </imageView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XkF-Mr-alk">
                                 <rect key="frame" x="20" y="332" width="51" height="31"/>
                                 <connections>
@@ -274,9 +277,13 @@
                                     <action selector="citySegmentedControlChanged:" destination="XrM-oZ-6EB" eventType="valueChanged" id="brQ-uG-e2z"/>
                                 </connections>
                             </segmentedControl>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tokyo" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-IS-sto">
-                                <rect key="frame" x="20" y="393" width="260" height="126"/>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wct-oU-ZU5">
+                                <rect key="frame" x="120" y="333" width="81" height="30"/>
+                                <state key="normal" title="Show Detail"/>
+                                <connections>
+                                    <segue destination="8zs-KN-Kh5" kind="push" identifier="showImageDetail" id="vV5-u3-BEC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -290,6 +297,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZA-8I-jE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="209" y="969"/>
+        </scene>
+        <!--Image Detail View Controller-->
+        <scene sceneID="uBO-r3-Quu">
+            <objects>
+                <viewController id="8zs-KN-Kh5" customClass="ImageDetailViewController" customModule="GuessNumberGames" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SEN-BE-WxZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="a1e-jq-DhQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZnI-ds-ibQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j6C-aM-YKf">
+                                <rect key="frame" x="40" y="220" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2ZR-Ob-hvW"/>
+                    <connections>
+                        <outlet property="detailImageView" destination="j6C-aM-YKf" id="bLv-i5-KFS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cu5-Pe-gsk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="639" y="969"/>
         </scene>
         <!--Games-->
         <scene sceneID="8yC-H4-aQG">
