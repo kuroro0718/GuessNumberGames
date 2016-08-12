@@ -10,12 +10,15 @@ import UIKit
 
 class FinalCodeViewController: UIViewController {
 
+    @IBOutlet weak var nextPlayerImageView: UIImageView!
+    @IBOutlet weak var currentPlayerImageView: UIImageView!
+    @IBOutlet weak var nextPlayerLabel: UILabel!
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
-    
     @IBOutlet weak var remainedNumberLabel: UILabel!
+    
     var password: Int?
     var rangeStart: Int = 0
     var rangeEnd: Int = 99
@@ -27,6 +30,9 @@ class FinalCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        currentPlayerImageView.layer.cornerRadius = currentPlayerImageView.frame.size.width / 2
+        nextPlayerImageView.layer.cornerRadius = nextPlayerImageView.frame.size.width / 2
+        
         // Do any additional setup after loading the view.
         createPassword()
         shufflePlayerList()
@@ -81,13 +87,19 @@ class FinalCodeViewController: UIViewController {
     }
     
     func updatePlayerName() {
-        playerNameLabel.text = playerList[playerIndex]
+        var playerName = playerList[playerIndex]
+        
+        playerNameLabel.text = "目前玩家： \(playerName)"
+        currentPlayerImageView.image = UIImage(named: playerName.lowercaseString)
         
         if playerIndex == playerList.count-1 {
             playerIndex = 0
         } else {
             playerIndex += 1
         }
+        playerName = playerList[playerIndex]
+        nextPlayerLabel.text = "下一位玩家： \(playerName)"
+        nextPlayerImageView.image = UIImage(named: playerName.lowercaseString)
     }
     
     func updateRemainedNumberLabel() {
