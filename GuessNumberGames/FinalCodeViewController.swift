@@ -19,15 +19,14 @@ class FinalCodeViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var remainedNumberLabel: UILabel!
 
-    var password: Int?
-    var rangeStart: Int = 0
-    var rangeEnd: Int = 99
     var previousPlayerIndex = 0 // For skip guessing
     var currentPlayerIndex = 1
     var playerIndex = 0
     var remainedNumber = 0
     var playerList = ["Alex", "Jeff", "John", "Peter"]
     var playerSkipDict = [String : Int]()
+
+    var finalCode = FinalCode(rangeStart: 0, rangeEnd: 100)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +34,8 @@ class FinalCodeViewController: UIViewController {
         currentPlayerImageView.layer.cornerRadius = currentPlayerImageView.frame.size.width / 2
         nextPlayerImageView.layer.cornerRadius = nextPlayerImageView.frame.size.width / 2
         
-        // Do any additional setup after loading the view.
-        createPassword()
+        print(finalCode.password)
+        // Do any additional setup after loading the view.        
         //shufflePlayerList()
         updatePlayerName()
     }
@@ -48,21 +47,17 @@ class FinalCodeViewController: UIViewController {
     
     @IBAction func confirmButtonPressed(sender: UIButton) {
         if let inputNumber = Int(inputTextField.text!) {
-            if inputNumber < rangeStart || inputNumber > rangeEnd {
+            if finalCode.isInputNumberValid(inputNumber) == false {
                 return
             }
             
-            if inputNumber < password! {
-                rangeStart = inputNumber + 1
-                updateResultLable()
-            } else if inputNumber > password! {
-                rangeEnd = inputNumber
-                updateResultLable()
-            } else {
+            let compareResult = finalCode.compareFinalCode(inputNumber)
+            if compareResult.result == true {
                 resultLabel.text? = "\(playerList[playerIndex - 1]) 你輸了！"
                 return
             }
             
+            updateResultLabel()
             inputTextField.text = ""
             updatePlayerName()
             updateRemainedNumberLabel()
@@ -70,7 +65,6 @@ class FinalCodeViewController: UIViewController {
     }
     
     @IBAction func newGameButtonPressed(sender: UIButton) {
-        createPassword()
         //shufflePlayerList()
         
         playerIndex = 0
@@ -117,16 +111,8 @@ class FinalCodeViewController: UIViewController {
         nextPlayerImageView.image = UIImage(named: playerName.lowercaseString)
     }
     
-    func createPassword() {
-        rangeStart = 1
-        rangeEnd = 100
-        resultLabel.text = "0 ~ 100"
-        password = Int(arc4random_uniform(99) + 1)
-        print(password)
-    }
-    
-    func updateResultLable() {
-        resultLabel.text? = "\(rangeStart) ~ \(rangeEnd)"
+    func updateResultLabel() {
+        resultLabel.text? = "\(finalCode.rangeStart) ~ \(finalCode.rangeEnd)"
     }
     
     func updatePlayerName() {
@@ -146,7 +132,7 @@ class FinalCodeViewController: UIViewController {
     }
     
     func updateRemainedNumberLabel() {
-        remainedNumber = rangeEnd - rangeStart + 1
+        remainedNumber = finalCode.rangeEnd - finalCode.rangeStart + 1
         remainedNumberLabel.text = "Remain: \(remainedNumber) numbers"
     }
     

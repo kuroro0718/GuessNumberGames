@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EB01DACE1D5C604E00763485 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01DACD1D5C604E00763485 /* ImageListViewController.swift */; };
 		EB01DAD01D5C673D00763485 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01DACF1D5C673D00763485 /* ImageDetailViewController.swift */; };
+		EB6333911D61E6AF00A7FD72 /* FinalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6333901D61E6AF00A7FD72 /* FinalCode.swift */; };
 		EBF90CE41D59A695003E962D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF90CE31D59A695003E962D /* AppDelegate.swift */; };
 		EBF90CE91D59A695003E962D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF90CE71D59A695003E962D /* Main.storyboard */; };
 		EBF90CEB1D59A695003E962D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF90CEA1D59A695003E962D /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		EB01DACD1D5C604E00763485 /* ImageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageListViewController.swift; sourceTree = "<group>"; };
 		EB01DACF1D5C673D00763485 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		EB6333901D61E6AF00A7FD72 /* FinalCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalCode.swift; sourceTree = "<group>"; };
 		EBF90CE01D59A695003E962D /* GuessNumberGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessNumberGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF90CE31D59A695003E962D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF90CE81D59A695003E962D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				EBF90CE31D59A695003E962D /* AppDelegate.swift */,
 				EBF90CF51D59AD0C003E962D /* FinalCodeViewController.swift */,
+				EB6333901D61E6AF00A7FD72 /* FinalCode.swift */,
 				EBF90CF71D59C489003E962D /* BullsAndCowsViewController.swift */,
 				EB01DACD1D5C604E00763485 /* ImageListViewController.swift */,
 				EB01DACF1D5C673D00763485 /* ImageDetailViewController.swift */,
@@ -150,6 +153,7 @@
 				EB01DACE1D5C604E00763485 /* ImageListViewController.swift in Sources */,
 				EBF90CF61D59AD0C003E962D /* FinalCodeViewController.swift in Sources */,
 				EB01DAD01D5C673D00763485 /* ImageDetailViewController.swift in Sources */,
+				EB6333911D61E6AF00A7FD72 /* FinalCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
