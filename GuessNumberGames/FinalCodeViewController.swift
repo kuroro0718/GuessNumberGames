@@ -18,10 +18,12 @@ class FinalCodeViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var remainedNumberLabel: UILabel!
-    
+
     var password: Int?
     var rangeStart: Int = 0
     var rangeEnd: Int = 99
+    var previousPlayerIndex = 0 // For skip guessing
+    var currentPlayerIndex = 1
     var playerIndex = 0
     var remainedNumber = 0
     var playerList = ["Alex", "Jeff", "John", "Peter"]
@@ -35,7 +37,7 @@ class FinalCodeViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         createPassword()
-        shufflePlayerList()
+        //shufflePlayerList()
         updatePlayerName()
     }
 
@@ -57,7 +59,8 @@ class FinalCodeViewController: UIViewController {
                 rangeEnd = inputNumber
                 updateResultLable()
             } else {
-                resultLabel.text? = "\(playerList[playerIndex]) 你輸了！"                
+                resultLabel.text? = "\(playerList[playerIndex - 1]) 你輸了！"
+                return
             }
             
             inputTextField.text = ""
@@ -68,10 +71,50 @@ class FinalCodeViewController: UIViewController {
     
     @IBAction func newGameButtonPressed(sender: UIButton) {
         createPassword()
-        shufflePlayerList()
+        //shufflePlayerList()
         
         playerIndex = 0
         updatePlayerName()
+    }
+    
+    @IBAction func returnButtonPressed(sender: AnyObject) {
+        previousPlayerIndex -= 1
+        if previousPlayerIndex < 0 {
+            previousPlayerIndex += 4
+        }
+        
+        var playerName = playerList[previousPlayerIndex]
+        
+        playerNameLabel.text = "目前玩家： \(playerName)"
+        currentPlayerImageView.image = UIImage(named: playerName.lowercaseString)
+        
+        currentPlayerIndex -= 1
+        if currentPlayerIndex < 0 {
+            currentPlayerIndex += 4
+        }
+        playerName = playerList[currentPlayerIndex]
+        nextPlayerLabel.text = "下一位玩家： \(playerName)"
+        nextPlayerImageView.image = UIImage(named: playerName.lowercaseString)
+    }
+    
+    @IBAction func passButtonPressed(sender: AnyObject) {
+        previousPlayerIndex += 1
+        if previousPlayerIndex >= playerList.count  {
+            previousPlayerIndex = 0
+        }
+        
+        var playerName = playerList[previousPlayerIndex]
+        
+        playerNameLabel.text = "目前玩家： \(playerName)"
+        currentPlayerImageView.image = UIImage(named: playerName.lowercaseString)
+        
+        currentPlayerIndex += 1
+        if currentPlayerIndex >= playerList.count {
+            currentPlayerIndex = 0
+        }
+        playerName = playerList[currentPlayerIndex]
+        nextPlayerLabel.text = "下一位玩家： \(playerName)"
+        nextPlayerImageView.image = UIImage(named: playerName.lowercaseString)
     }
     
     func createPassword() {
