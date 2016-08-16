@@ -21,7 +21,7 @@ class FinalCode {
     }
     
     func createFinalCode(rangeStart: Int, rangeEnd: Int) {
-        password = Int(arc4random_uniform(UInt32(rangeStart)) + UInt32(rangeEnd))
+        password = Int(arc4random_uniform(UInt32(rangeEnd)) + UInt32(rangeStart))
     }
     
     func isInputNumberValid(inputNumber: Int) -> Bool {
