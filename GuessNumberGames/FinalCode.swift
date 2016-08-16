@@ -11,23 +11,17 @@ import Foundation
 class FinalCode {
     var rangeStart: Int
     var rangeEnd: Int
-    var password: Int
+    var password: Int?
+    var remainedNumbers: Int?
     
-    init(password: Int, rangeStart: Int, rangeEnd: Int) {
-        self.password = password
+    init(rangeStart: Int, rangeEnd: Int) {
         self.rangeStart = rangeStart
         self.rangeEnd = rangeEnd
+        self.createFinalCode(rangeStart, rangeEnd: rangeEnd)
     }
     
-    convenience init(rangeStart: Int, rangeEnd: Int) {
-        let password = Int(arc4random_uniform(99) + 1)
-        self.init(password: password, rangeStart: rangeStart, rangeEnd: rangeEnd)
-    }
-    
-    func createFinalCode() {
-        password = Int(arc4random_uniform(99) + 1)
-        rangeStart = 1
-        rangeEnd = 100
+    func createFinalCode(rangeStart: Int, rangeEnd: Int) {
+        password = Int(arc4random_uniform(UInt32(rangeStart)) + UInt32(rangeEnd))
     }
     
     func isInputNumberValid(inputNumber: Int) -> Bool {
@@ -38,7 +32,7 @@ class FinalCode {
         return true
     }
     
-    func compareFinalCode(inputNumber: Int) -> (result: Bool, rangeStart: Int, rangeEnd: Int) {
+    func isEqualToFinalCode(inputNumber: Int) -> Bool {
         var isEqualToFinalCode = false
         
         if inputNumber < password {
@@ -49,7 +43,10 @@ class FinalCode {
             isEqualToFinalCode = true
         }
         
-        return (isEqualToFinalCode, rangeStart, rangeEnd)
+        return isEqualToFinalCode
     }
     
+    func calculateRemainedNumbers() -> Int {
+        return rangeEnd - rangeStart + 1
+    }
 }

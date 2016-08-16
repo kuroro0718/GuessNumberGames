@@ -22,7 +22,6 @@ class FinalCodeViewController: UIViewController {
     var previousPlayerIndex = 0 // For skip guessing
     var currentPlayerIndex = 1
     var playerIndex = 0
-    var remainedNumber = 0
     var playerList = ["Alex", "Jeff", "John", "Peter"]
     var playerSkipDict = [String : Int]()
 
@@ -34,7 +33,6 @@ class FinalCodeViewController: UIViewController {
         currentPlayerImageView.layer.cornerRadius = currentPlayerImageView.frame.size.width / 2
         nextPlayerImageView.layer.cornerRadius = nextPlayerImageView.frame.size.width / 2
         
-        print(finalCode.password)
         // Do any additional setup after loading the view.        
         //shufflePlayerList()
         updatePlayerName()
@@ -51,14 +49,13 @@ class FinalCodeViewController: UIViewController {
                 return
             }
             
-            let compareResult = finalCode.compareFinalCode(inputNumber)
-            if compareResult.result == true {
+            if finalCode.isEqualToFinalCode(inputNumber) == true {
                 resultLabel.text? = "\(playerList[playerIndex - 1]) 你輸了！"
                 return
             }
             
-            updateResultLabel()
             inputTextField.text = ""
+            updateResultLabel()
             updatePlayerName()
             updateRemainedNumberLabel()
         }
@@ -132,7 +129,7 @@ class FinalCodeViewController: UIViewController {
     }
     
     func updateRemainedNumberLabel() {
-        remainedNumber = finalCode.rangeEnd - finalCode.rangeStart + 1
+        let remainedNumber = finalCode.calculateRemainedNumbers()
         remainedNumberLabel.text = "Remain: \(remainedNumber) numbers"
     }
     
