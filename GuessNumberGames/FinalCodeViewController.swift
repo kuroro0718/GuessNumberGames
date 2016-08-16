@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FinalCodeViewController: UIViewController {
+class FinalCodeViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nextPlayerImageView: UIImageView!
     @IBOutlet weak var currentPlayerImageView: UIImageView!
@@ -31,6 +31,8 @@ class FinalCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        inputTextField.delegate = self
+        
         currentPlayerImageView.layer.cornerRadius = currentPlayerImageView.frame.size.width / 2
         nextPlayerImageView.layer.cornerRadius = nextPlayerImageView.frame.size.width / 2
         
@@ -154,11 +156,31 @@ class FinalCodeViewController: UIViewController {
         playerList.append(Player(name: "John", imageName: "john", hasReturned: false, hasPassed: false))
         playerList.append(Player(name: "Peter", imageName: "peter", hasReturned: false, hasPassed: false))
         
-//        let count = playerList.count
-//        for i in 0..<count - 1 {
-//            let j = Int(arc4random_uniform(UInt32(count - i))) + i
-//            guard i != j else { continue }
-//            swap(&playerList[i], &playerList[j])
-//        }
+        let count = playerList.count
+        for i in 0..<count - 1 {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            guard i != j else { continue }
+            swap(&playerList[i], &playerList[j])
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if let inputNumber = Int(inputTextField.text!) {
+            if finalCode.isInputNumberValid(inputNumber) == false {
+                return false
+            }
+            
+            if finalCode.isEqualToFinalCode(inputNumber) == true {
+                resultLabel.text? = "\(currentPlayer) 你輸了！"
+                return false
+            }
+            
+            inputTextField.text = ""
+            updateResultLabel()
+            updatePlayerName()
+            updateRemainedNumberLabel()
+        }
+        
+        return true
     }
 }
