@@ -18,16 +18,15 @@ class FinalCodeViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var remainedNumberLabel: UILabel!
+    @IBOutlet weak var returnButton: UIButton!
+    @IBOutlet weak var passButton: UIButton!
 
-    var password: Int?
-    var rangeStart: Int = 0
-    var rangeEnd: Int = 99
-    var previousPlayerIndex = 0 // For skip guessing
-    var currentPlayerIndex = 1
     var playerIndex = 0
-    var remainedNumber = 0
-    var playerList = ["Alex", "Jeff", "John", "Peter"]
-    var playerSkipDict = [String : Int]()
+    var listIncrement = 1
+    var currentPlayer = ""
+    
+    var finalCode = FinalCode(rangeStart: 0, rangeEnd: 100)
+    var playerList = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +34,8 @@ class FinalCodeViewController: UIViewController {
         currentPlayerImageView.layer.cornerRadius = currentPlayerImageView.frame.size.width / 2
         nextPlayerImageView.layer.cornerRadius = nextPlayerImageView.frame.size.width / 2
         
-        // Do any additional setup after loading the view.
-        createPassword()
-        //shufflePlayerList()
+        // Do any additional setup after loading the view.        
+        createPlayerList()
         updatePlayerName()
     }
 
@@ -48,117 +46,119 @@ class FinalCodeViewController: UIViewController {
     
     @IBAction func confirmButtonPressed(sender: UIButton) {
         if let inputNumber = Int(inputTextField.text!) {
-            if inputNumber < rangeStart || inputNumber > rangeEnd {
+            if finalCode.isInputNumberValid(inputNumber) == false {
                 return
             }
             
-            if inputNumber < password! {
-                rangeStart = inputNumber + 1
-                updateResultLable()
-            } else if inputNumber > password! {
-                rangeEnd = inputNumber
-                updateResultLable()
-            } else {
-                resultLabel.text? = "\(playerList[playerIndex - 1]) 你輸了！"
+            if finalCode.isEqualToFinalCode(inputNumber) == true {
+                resultLabel.text? = "\(currentPlayer) 你輸了！"
                 return
             }
             
             inputTextField.text = ""
+            updateResultLabel()
             updatePlayerName()
             updateRemainedNumberLabel()
         }
     }
     
     @IBAction func newGameButtonPressed(sender: UIButton) {
-        createPassword()
-        //shufflePlayerList()
+        inputTextField.text = ""
+        finalCode.rangeStart = 0
+        finalCode.rangeEnd = 100
+        finalCode.createFinalCode(finalCode.rangeStart, rangeEnd: finalCode.rangeEnd)
         
-        playerIndex = 0
+        updateResultLabel()
+        createPlayerList()
         updatePlayerName()
+        updateRemainedNumberLabel()
     }
     
     @IBAction func returnButtonPressed(sender: AnyObject) {
-        previousPlayerIndex -= 1
-        if previousPlayerIndex < 0 {
-            previousPlayerIndex += 4
-        }
+        playerList[playerIndex].hasReturned = true
+        playerIndex -= 1
+        listIncrement = -1
         
-        var playerName = playerList[previousPlayerIndex]
-        
-        playerNameLabel.text = "目前玩家： \(playerName)"
-        currentPlayerImageView.image = UIImage(named: playerName.lowercaseString)
-        
-        currentPlayerIndex -= 1
-        if currentPlayerIndex < 0 {
-            currentPlayerIndex += 4
-        }
-        playerName = playerList[currentPlayerIndex]
-        nextPlayerLabel.text = "下一位玩家： \(playerName)"
-        nextPlayerImageView.image = UIImage(named: playerName.lowercaseString)
+        updatePlayerName()
     }
     
     @IBAction func passButtonPressed(sender: AnyObject) {
-        previousPlayerIndex += 1
-        if previousPlayerIndex >= playerList.count  {
-            previousPlayerIndex = 0
-        }
+        playerList[playerIndex - 1].hasPassed = true
+        listIncrement = 1
         
-        var playerName = playerList[previousPlayerIndex]
-        
-        playerNameLabel.text = "目前玩家： \(playerName)"
-        currentPlayerImageView.image = UIImage(named: playerName.lowercaseString)
-        
-        currentPlayerIndex += 1
-        if currentPlayerIndex >= playerList.count {
-            currentPlayerIndex = 0
-        }
-        playerName = playerList[currentPlayerIndex]
-        nextPlayerLabel.text = "下一位玩家： \(playerName)"
-        nextPlayerImageView.image = UIImage(named: playerName.lowercaseString)
+        updatePlayerName()
     }
     
-    func createPassword() {
-        rangeStart = 1
-        rangeEnd = 100
-        resultLabel.text = "0 ~ 100"
-        password = Int(arc4random_uniform(99) + 1)
-        print(password)
-    }
-    
-    func updateResultLable() {
-        resultLabel.text? = "\(rangeStart) ~ \(rangeEnd)"
+    func updateResultLabel() {
+        resultLabel.text? = "\(finalCode.rangeStart) ~ \(finalCode.rangeEnd)"
     }
     
     func updatePlayerName() {
-        var playerName = playerList[playerIndex]
+        var player = playerList[playerIndex]
         
-        playerNameLabel.text = "目前玩家： \(playerName)"
-        currentPlayerImageView.image = UIImage(named: playerName.lowercaseString)
+        currentPlayer = player.name
+        playerNameLabel.text = "目前玩家： \(currentPlayer)"
+        currentPlayerImageView.image = UIImage(named: player.imageName)
         
-        if playerIndex == playerList.count-1 {
-            playerIndex = 0
-        } else {
-            playerIndex += 1
-        }
-        playerName = playerList[playerIndex]
-        nextPlayerLabel.text = "下一位玩家： \(playerName)"
-        nextPlayerImageView.image = UIImage(named: playerName.lowercaseString)
+        updateSkipButtons(player)
+        updatePlayerIndex()
+        
+        player = playerList[playerIndex]
+        nextPlayerLabel.text = "下一位玩家： \(player.name)"
+        nextPlayerImageView.image = UIImage(named: player.imageName)
     }
     
     func updateRemainedNumberLabel() {
-        remainedNumber = rangeEnd - rangeStart + 1
+        let remainedNumber = finalCode.calculateRemainedNumbers()
         remainedNumberLabel.text = "Remain: \(remainedNumber) numbers"
     }
     
-    func shufflePlayerList() {
-        let count = playerList.count
+    func updatePlayerIndex() {
+        var wasNegative = false
         
-        for i in 0..<count - 1 {
-            let j = Int(arc4random_uniform(UInt32(count - i))) + i
-            guard i != j else { continue }
-            swap(&playerList[i], &playerList[j])
+        playerIndex += listIncrement
+        if playerIndex < 0 {
+            wasNegative = true
+            playerIndex = -playerIndex
+        } else if playerIndex > playerList.count - 1 {
+            playerIndex = 0
         }
         
-        print(playerList)
+        playerIndex %= playerList.count
+        if wasNegative {
+            playerIndex = playerList.count - playerIndex
+        }
+    }
+    
+    func updateSkipButtons(player: Player) {
+        
+        if player.hasReturned {
+            returnButton.enabled = false
+        } else {
+            returnButton.enabled = true
+        }
+        
+        if player.hasPassed {
+            passButton.enabled = false
+        } else {
+            passButton.enabled = true
+        }
+    }
+    
+    func createPlayerList() {
+        
+        playerIndex = 0
+        
+        playerList.append(Player(name: "Alex", imageName: "alex", hasReturned: false, hasPassed: false))
+        playerList.append(Player(name: "Jeff", imageName: "jeff", hasReturned: false, hasPassed: false))
+        playerList.append(Player(name: "John", imageName: "john", hasReturned: false, hasPassed: false))
+        playerList.append(Player(name: "Peter", imageName: "peter", hasReturned: false, hasPassed: false))
+        
+//        let count = playerList.count
+//        for i in 0..<count - 1 {
+//            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+//            guard i != j else { continue }
+//            swap(&playerList[i], &playerList[j])
+//        }
     }
 }

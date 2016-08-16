@@ -219,9 +219,11 @@
                         <outlet property="inputTextField" destination="EfK-6R-e8n" id="7mg-Fs-Hy7"/>
                         <outlet property="nextPlayerImageView" destination="YsP-oD-AkG" id="A2Z-Df-HWB"/>
                         <outlet property="nextPlayerLabel" destination="kbi-s9-A63" id="vWI-h8-tmW"/>
+                        <outlet property="passButton" destination="Tzq-oC-XU0" id="PR0-74-Kru"/>
                         <outlet property="playerNameLabel" destination="jC7-WH-Cl4" id="jsI-QS-awt"/>
                         <outlet property="remainedNumberLabel" destination="BGb-Ys-Hgi" id="Qrl-hV-SzW"/>
                         <outlet property="resultLabel" destination="1sQ-Bg-vwe" id="6pG-Ct-70f"/>
+                        <outlet property="returnButton" destination="NrS-Kj-s6u" id="z4y-mY-Pek"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
